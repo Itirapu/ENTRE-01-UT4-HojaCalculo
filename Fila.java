@@ -18,17 +18,21 @@ public class Fila
     /**
      * Constructor  
      */
-    public Fila(String id)    {
-         
-
+    public Fila(String id){
+         this.id = id;
+         this.fecha = new Fecha(1, 1, 2020);
+         this.ingresos = 0;
+         this.gastos = 0;
     }
 
     /**
      * Constructor  
      */
-    public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+    public Fila(String id, Fecha fecha, double ingresos, double gastos){
+        this.id = id;
+        this.fecha = fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
     }
     
     /**
@@ -78,17 +82,25 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return null;
-
+       Fila CopiaFila = new Fila(id, fecha, ingresos, gastos);
+       return CopiaFila;
     }
 
     /**
      * Representación textual de una fila
      * (leer enunciado)
      */
-    public String toString() {
-      return null;
-
+    public String toString(){
+      String idFila = id;
+      String fechaFila = fecha.toString();
+      double ingresosFila = ingresos;
+      double gastosFila = gastos;
+      double saldo = ingresosFila - gastosFila;
+      String salida = String.format("%8s%15s%15.2f€%15.2f€%15.2f€", idFila, fechaFila, ingresosFila, gastosFila, saldo);
+      if(saldo < 0){
+          salida = salida + " **";
+        }
+      return  salida;
     }
 
      
